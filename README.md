@@ -91,7 +91,7 @@ chmod +x hyperos_notification_fix.sh
 
 Phase 1: cloud_lowlatency_whitelist  
 Phase 2: deviceidle whitelist  
-Phase 3: disable com.miui.powerkeeper  
+Phase 3: suspend com.miui.powerkeeper  
 
 ---
 
