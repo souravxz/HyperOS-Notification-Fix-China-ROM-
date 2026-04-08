@@ -1,127 +1,158 @@
-# 🚀 HyperOS Notification Fix (China ROM)
+# HyperOS Notification Fix (China ROM) 🚀
 
-Fix delayed or missing notifications on China HyperOS devices using ADB tweaks, battery whitelist optimization, and PowerKeeper control.
+## 📌 Overview
+This project provides a powerful ADB-based script to fix delayed or missing notifications on China HyperOS devices.
+
+It solves issues caused by:
+- Aggressive battery optimization
+- MIUI/HyperOS PowerKeeper restrictions
+- Background process killing
+- Cloud low-latency restrictions
 
 ---
 
+## ⚙️ Features
+- Adds apps to **Low Latency Whitelist**
+- Adds apps to **DeviceIdle (Battery) Whitelist**
+- Suspends **PowerKeeper (MIUI battery daemon)**
+- Supports custom apps (WhatsApp, Messenger, etc.)
+- Works via **Termux** and **Linux**
+
+---
 ## 📸 Preview
 
 <p align="center">
   <img src="assets/demo.png" width="900"/>
 </p>
 
----
+## 📋 Prerequisites
 
-## 📌 Features
-
-- ✅ Fix delayed notifications (WhatsApp, Messenger, Instagram, etc.)
-- ⚡ Low Latency Whitelist optimization
-- 🔋 Disable aggressive battery killing
-- 🧠 Suspend MIUI/HyperOS PowerKeeper
-- 🛠 Works on Linux & Termux
-- ➕ Supports custom apps input
-
----
-
-## ⚙️ Prerequisites
-
-### 📱 On Your Phone:
-- Enable Developer Options
-- Enable USB Debugging
-- Install Google Play Services (updated)
-- Install Carrier Services
-- Set apps to:
-  - Autostart ON
-  - Battery → No Restrictions
-  - All permissions granted
+### On Phone:
+- Enable **Developer Options**
+- Enable **USB Debugging**
+- Install:
+  - Google Play Services (updated)
+  - Carrier Services
+- Disable battery restrictions for apps
 
 ---
 
 ## 🧰 Setup Guide
 
-### 🔹 Option A (Quick Fix)
-1. Install Carrier Services  
-2. Login to apps  
-3. Run script  
+### Option A (Quick Fix)
+1. Install Carrier Services
+2. Login to apps (WhatsApp, Messenger, etc.)
+3. Continue setup
 
-### 🔹 Option B (Recommended - Stable)
-1. Factory Reset  
-2. Login Mi Account  
-3. Update system apps (GetApps)  
-4. Enable Basic Google Services  
-5. Login Google Account  
-6. Install Google apps  
-7. Update Play Services  
-8. Install & enable Carrier Services  
-
----
-
-## 💻 Usage (Linux)
-
-### Install ADB
-sudo dnf install android-tools   # Fedora  
-sudo apt install adb             # Ubuntu/Debian  
-
-### Connect Device
-adb devices  
-
-### Run Script
-chmod +x hyperos_notification_fix.sh  
-./hyperos_notification_fix.sh  
-
-### Enter Apps
-com.whatsapp,com.facebook.orca,com.instagram.android  
+### Option B (Recommended - Stable)
+1. Factory Reset device
+2. Login Mi Account
+3. Update system apps (GetApps)
+4. Enable Basic Google Services
+5. Login Google Account
+6. Install Google apps
+7. Update Google Play Services
+8. Install & enable Carrier Services
 
 ---
 
-## 📱 Usage (Termux)
+## 💻 Usage on Linux (Fedora/Ubuntu/Kali)
 
-pkg update && pkg upgrade  
-pkg install android-tools git  
+### Step 1: Install ADB
+```bash
+sudo dnf install android-tools   # Fedora
+sudo apt install adb             # Ubuntu/Debian
+```
 
-adb pair IP:PORT  
-adb connect IP:PORT  
+### Step 2: Connect Device
+```bash
+adb devices
+```
 
-chmod +x hyperos_notification_fix.sh  
-./hyperos_notification_fix.sh  
+### Step 3: Run Script
+```bash
+chmod +x hyperos_notification_fix.sh
+./hyperos_notification_fix.sh
+```
+
+### Step 4: Input Apps
+Example:
+```
+com.whatsapp,com.facebook.orca,com.instagram.android
+```
 
 ---
 
-## 🔄 What This Script Does
+## 📱 Usage on Termux (Android)
 
-Phase 1: cloud_lowlatency_whitelist  
-Phase 2: deviceidle whitelist  
-Phase 3: suspend com.miui.powerkeeper  
+### Step 1: Install Packages
+```bash
+pkg update && pkg upgrade
+pkg install android-tools git
+```
+
+### Step 2: Enable Wireless Debugging
+- Turn ON Wireless Debugging in Developer Options
+- Pair device:
+```bash
+adb pair IP:PORT
+adb connect IP:PORT
+```
+
+### Step 3: Run Script
+```bash
+chmod +x hyperos_notification_fix.sh
+./hyperos_notification_fix.sh
+```
+
+---
+
+## 🔄 What Script Does
+
+### Phase 1:
+Adds apps to:
+```
+cloud_lowlatency_whitelist
+```
+
+### Phase 2:
+Adds apps to:
+```
+deviceidle whitelist
+```
+
+### Phase 3:
+Suspends:
+```
+com.miui.powerkeeper
+```
 
 ---
 
 ## ⚠️ Important Notes
-
-- Reboot after running script  
-- Grant ALL permissions  
-- Enable Autostart  
-- Set Battery → No Restrictions  
+- Always reboot after running script
+- Grant ALL permissions to apps
+- Enable Autostart for apps
+- Set Battery → No Restrictions
 
 ---
 
 ## ♻️ Restore PowerKeeper
-
-adb shell pm unsuspend com.miui.powerkeeper  
-
----
-
-## 👨‍💻 Author
-
-Sourav Debnath  
+```bash
+adb shell pm unsuspend com.miui.powerkeeper
+```
 
 ---
 
-## ⭐ Support
+## 🧑‍💻 Author
+Sourav Debnath
 
-Star ⭐ the repo if it helped!
+---
+
+## ⭐ Contribute
+Feel free to fork, improve, and submit pull requests.
 
 ---
 
 ## 📜 License
-
-Open-source for educational & personal use.
+Open-source for educational and personal use.
